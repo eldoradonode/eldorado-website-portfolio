@@ -1,0 +1,6 @@
+{
+  "name": "Eldorado Node | AI Automation & Systems Architecture",
+  "description": "Eldorado Node builds AI-powered automation systems that eliminate manual bottlenecks, connect your business tools, and streamline operations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
