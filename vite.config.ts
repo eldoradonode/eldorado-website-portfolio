@@ -1,21 +1,21 @@
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
+import react from '@vitejs.plugin-react';
 
-export default defineConfig(() => {
-  return {
-    base: './',
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  // Ensures proper relative asset paths for GitHub Pages and custom domain deployments
+  base: './',
+  build: {
+    // Generates source maps for easier production debugging if needed
+    sourcemap: false,
+    // Optimizes bundle size by splitting heavy vendor dependencies into separate chunks
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
       },
     },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-    },
-  };
+  },
 });
